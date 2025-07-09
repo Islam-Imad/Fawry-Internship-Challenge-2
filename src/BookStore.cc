@@ -119,3 +119,15 @@ void BookStore::buyBook(const std::string &ISBN, const std::string &email, const
         }
     }
 }
+
+void BookStore::printBooks()
+{
+    std::shared_ptr<GlobalIdentifierProperty> gip; 
+    std::shared_ptr<DateProperty> dp;
+    for (auto const &book : books)
+    {
+        gip = pmanager.getGlobalIdentifierProperty(book.getProperty(GlobalIdentifier));
+        dp = pmanager.getDateProperty(book.getProperty(Date));
+        std::cout << book.getName() << ' ' << book.getPrice() << ' ' << gip->getGlobalIdentifier() << ' ' << dp->getDate() << '\n';
+    }
+}

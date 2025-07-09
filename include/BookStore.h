@@ -40,6 +40,8 @@ public:
     void sendEBook(const std::string &email, const std::string &ISBN);
 
     void buyBook(const std::string &ISBN,const std::string &email, const std::string &address);
+
+    void printBooks();
 };
 
 #endif // BOOKSTORE_H
