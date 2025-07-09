@@ -8,8 +8,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-# enable_testing()
-# add_subdirectory(${CMAKE_SOURCE_DIR}/test)
+enable_testing()
+add_subdirectory(${CMAKE_SOURCE_DIR}/test)
 
 
 add_executable(

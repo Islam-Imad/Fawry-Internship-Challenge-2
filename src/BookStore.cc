@@ -108,6 +108,7 @@ void BookStore::buyBook(const std::string &ISBN, const std::string &email, const
         if (quantity && quantity->getQuantity() > 0)
         {
             quantity->setQuantity(quantity->getQuantity() - 1);
+            std::cout << "Book is send successfuly :)\n";
             sendPaperBook(address, ISBN);
             sendEBook(email, ISBN);
         }

@@ -1,3 +1,4 @@
+#include <gtest/gtest.h>
 #include <iostream>
 #include <memory>
 #include "subscribers.h"
@@ -7,7 +8,7 @@
 #include "ProductCategory.h"
 #include "BookStore.h"
 
-int main()
+TEST(BookStore, BuyBook)
 {
     ProductManager manager;
     Book book1(30, "C++ Programming", "1", "2023-10-01", 100, "ebook1_file.pdf");
@@ -18,8 +19,18 @@ int main()
     store.addBook(book1);
     store.addBook(book2);
     store.addBook(book3);
-    std::cout << qp->getQuantity() << '\n'; 
-    store.buyBook("2","souka@sa.com","street2");
-    std::cout << qp->getQuantity() << '\n'; 
-    return 0;
+    ASSERT_EQ(qp->getQuantity(), 50);
+    store.buyBook("2", "souka@sa.com", "street2");
+    ASSERT_EQ(qp->getQuantity(), 49);
+}
+
+TEST(BookStore, RemoveBook)
+{
+    ProductManager manager;
+    Book book1(30, "C++ Programming", "1", "2023-10-01", 100, "ebook1_file.pdf");
+    BookStore store;
+    store.addBook(book1);
+    store.removeBook("1");
+    std::shared_ptr<Product> b = store.getBook("1");
+    ASSERT_EQ(b, nullptr);
 }
